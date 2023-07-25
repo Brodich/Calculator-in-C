@@ -1,0 +1,379 @@
+#include "c_files/smart_calc.h"
+    //   char* in = "sin(3.5) + asin(1) * cos(-2.9) / atan((acos(4) - tan(5)) ^ 2";
+
+#test calcul_1
+  char* in = "(3.1 + 3 mod 2) / (1 + sin(2^3^2) * 2 - 4)";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -1.44317260827;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_2
+  char* in = "3.5 + 4 * (-2.9) / (4 - 5) ^ 2";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -8.1;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+
+#test calcul_3
+  char* in = "sin(3.5) * cos(-2.9)";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 0.340595839122764;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+
+#test calcul_4
+  char* in = "sin(3.5) + asin(1) * cos(-2.9)";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -1.87596074697811;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+
+#test calcul_5
+  char* in = "acos(1) - tan(5)";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 3.38051500624659;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_6
+  char* in = "atan(acos(1) - tan(3))";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 0.141592653589793;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_7
+  char* in = "(atan(acos(1) - tan(3))) ^ 2";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 0.0200484795505992;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_8
+  char* in = "sin(3.5) + asin(1) * cos(-2.9) / (atan(acos(1) - tan(3))) ^ 2";
+    char polish[255] = {0};
+      int error = 0;
+
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -76.4252563785928;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_9
+  char* in = "ln(4) / log(4) - sqrt(3)";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 0.570534285425168;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_10
+  char* in = "346 / 33";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 10.4848484848485;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_11
+  char* in = "33 - 346 / 33";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 22.5151515151515;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_12
+  char* in = "-33 - 346 / 33";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -43.4848484848485;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_13
+  char* in = "-33.554 - 346.000";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -379.554;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_14
+  char* in = "346.0 / 33.0";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 10.4848484848485;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_15
+  char* in = "33.554 - 346.0 / 33.0";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 23.0691515151515;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_16
+  char* in = "-33.554 - 346.0 / 33.0";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -44.0388484848485;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_error_1
+  char* in = "5 / (sin(1) - sin(1))";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_DIV_BY_ZERO;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_2
+  char* in = "5 / (sin(1) - sin(1)";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_BRACKET;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_3
+  char* in = "5 / sin(1) - sin(1))";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_BRACKET;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_4
+  char* in = "5 / sin(1) - ";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_5
+  char* in = "5 5 ";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_STACK_NUMBER;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_6
+  char* in = "5 / sin(1) 5";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_STACK_NUMBER;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_7
+  char* in = "5 / si(1) 5";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_NOT_FUNCTION;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_8
+  char* in = "asin(4)";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_NAN;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_9
+  char* in = "asin()";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_SMALL_STACK;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_10
+  char* in = "10..3 + 4";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_MANY_DOTS;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+#test calcul_error_11
+  char* in = "10.3 G + 4";
+    char polish[255] = {0};
+      int smart_error = 0;
+      int true_error = ERROR_NOT_CORRECT_SYMBOLE;
+
+  smart_error = ft_from_infix_to_postfix(in, polish);
+  double smart_res = 0;
+  if (smart_error == SUCCESS) {
+    smart_error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_int_eq(smart_error, true_error);
+
+
+//     char* in = "5 / sin(1) 5 ";
+    //   char* in = "sin(3.5) + asin(1) * cos(-2.9) / (atan(acos(1) - tan(3))) ^ 2";
