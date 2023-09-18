@@ -14,4 +14,6 @@ make
 
 На вход подается выражение, которое необходимо расчитать. По этому выражению можно построить график, если в нём присутствует 'X' или можно вычислить.
 
-<img src="./images/calcul.jpg" alt="calcul" width="50%">
+<div align="center">
+	<img src="./images/calcul.jpg" alt="calcul" width="100%">
+</div>
