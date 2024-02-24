@@ -1229,7 +1229,7 @@
      <double>5.000000000000000</double>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_power_2">
+   <widget class="QPushButton" name="pushButton_bracket_1">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -1262,7 +1262,7 @@
      <string>(</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_power_3">
+   <widget class="QPushButton" name="pushButton_bracket_2">
     <property name="geometry">
      <rect>
       <x>220</x>

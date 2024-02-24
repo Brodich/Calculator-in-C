@@ -23,45 +23,50 @@ MainWindow::MainWindow(QWidget* parent)
   ui->customplot->yAxis->setRange(min_Y, max_Y);
   ui->customplot->xAxis->setRange(min_X, max_X);
 
-  connect(ui->pushButton_0, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_1, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+  connect(ui->pushButton_0, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_1, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
-  connect(ui->pushButton_x, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+  connect(ui->pushButton_x, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
-  connect(ui->pushButton_plus, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+  connect(ui->pushButton_plus, SIGNAL(clicked()), this, SLOT(add_symbol()));
   connect(ui->pushButton_minus, SIGNAL(clicked()), this,
-          SLOT(digits_numbers()));
-  connect(ui->pushButton_mult, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+          SLOT(add_symbol()));
+  connect(ui->pushButton_mult, SIGNAL(clicked()), this, SLOT(add_symbol()));
   connect(ui->pushButton_divide, SIGNAL(clicked()), this,
-          SLOT(digits_numbers()));
+          SLOT(add_symbol()));
   connect(ui->pushButton_power, SIGNAL(clicked()), this,
-          SLOT(digits_numbers()));
-  connect(ui->pushButton_mod, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_sqrt, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+          SLOT(add_symbol()));
+  connect(ui->pushButton_mod, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_sqrt, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
-  connect(ui->pushButton_cos, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_acos, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_sin, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_asin, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_tan, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_atan, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_ln, SIGNAL(clicked()), this, SLOT(digits_numbers()));
-  connect(ui->pushButton_log, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+  connect(ui->pushButton_cos, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_acos, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_sin, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_asin, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_tan, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_atan, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_ln, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_log, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
-  connect(ui->pushButton_dot, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+  connect(ui->pushButton_dot, SIGNAL(clicked()), this, SLOT(add_symbol()));
+
+  connect(ui->pushButton_bracket_1, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_bracket_2, SIGNAL(clicked()), this, SLOT(add_symbol()));
+
+  connect(ui->result_show, &QLineEdit::returnPressed, this, &MainWindow::on_pushButton_equal_clicked);
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::digits_numbers() {
+void MainWindow::add_symbol() {
   QPushButton* button = (QPushButton*)sender();
 
   if (ui->result_show->text() == "0") {
@@ -183,7 +188,7 @@ void MainWindow::replace_x_value(QString* str_show_line, QString str_x_value) {
   size_t pos = str_show_line->indexOf('x');
 
   if (pos != std::string::npos) {
-    str_show_line->replace("x", str_x_value);
+    str_show_line->replace("x", "(" + str_x_value + ")");
   }
 }
 

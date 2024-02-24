@@ -38,7 +38,7 @@ private:
 
 
 private slots:
-    void digits_numbers();
+    void add_symbol();
     int get_result(QString str_show_line, double* result);
     void replace_x_value(QString* str_show_line, QString str_x_value);
     double get_y_value(double copy_min_x, QString str_show_line, int* code);
