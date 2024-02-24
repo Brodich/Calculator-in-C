@@ -55,10 +55,13 @@ MainWindow::MainWindow(QWidget* parent)
 
   connect(ui->pushButton_dot, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
-  connect(ui->pushButton_bracket_1, SIGNAL(clicked()), this, SLOT(add_symbol()));
-  connect(ui->pushButton_bracket_2, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_bracket_1, SIGNAL(clicked()), this,
+          SLOT(add_symbol()));
+  connect(ui->pushButton_bracket_2, SIGNAL(clicked()), this,
+          SLOT(add_symbol()));
 
-  connect(ui->result_show, &QLineEdit::returnPressed, this, &MainWindow::on_pushButton_equal_clicked);
+  connect(ui->result_show, &QLineEdit::returnPressed, this,
+          &MainWindow::on_pushButton_equal_clicked);
 }
 
 MainWindow::~MainWindow() { delete ui; }
