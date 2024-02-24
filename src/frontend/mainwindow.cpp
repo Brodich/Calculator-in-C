@@ -37,13 +37,10 @@ MainWindow::MainWindow(QWidget* parent)
   connect(ui->pushButton_x, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
   connect(ui->pushButton_plus, SIGNAL(clicked()), this, SLOT(add_symbol()));
-  connect(ui->pushButton_minus, SIGNAL(clicked()), this,
-          SLOT(add_symbol()));
+  connect(ui->pushButton_minus, SIGNAL(clicked()), this, SLOT(add_symbol()));
   connect(ui->pushButton_mult, SIGNAL(clicked()), this, SLOT(add_symbol()));
-  connect(ui->pushButton_divide, SIGNAL(clicked()), this,
-          SLOT(add_symbol()));
-  connect(ui->pushButton_power, SIGNAL(clicked()), this,
-          SLOT(add_symbol()));
+  connect(ui->pushButton_divide, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_power, SIGNAL(clicked()), this, SLOT(add_symbol()));
   connect(ui->pushButton_mod, SIGNAL(clicked()), this, SLOT(add_symbol()));
   connect(ui->pushButton_sqrt, SIGNAL(clicked()), this, SLOT(add_symbol()));
 

@@ -40,6 +40,8 @@ int ft_from_infix_to_postfix(char* pt_in, char* pt_polish) {
   while (*pt_in != '\0' && code == SUCCESS) {
     symb = *pt_in;
     if ((first_symbol == 1 || *(pt_in - 1) == '(') && symb == '-') {
+    // if (symb == '-' && *(pt_in + 1) == '') {
+      // ft_is_number
       ft_handling_unar_minus(&pt_polish, &stack_polish, symb);
     } else if (symb >= '0' && symb <= '9') {
       code = ft_polish_number(symb, &pt_in, &pt_polish);
