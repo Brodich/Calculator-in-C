@@ -227,6 +227,32 @@
   }
     ck_assert_float_eq(smart_res, true_res);
 
+#test calcul_17
+  char* in = "55-5";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 50;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
+#test calcul_18
+  char* in = "55--5";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = 60;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+
 #test calcul_error_1
   char* in = "5 / (sin(1) - sin(1))";
     char polish[255] = {0};

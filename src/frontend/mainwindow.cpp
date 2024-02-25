@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget* parent)
   connect(ui->pushButton_log, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
   connect(ui->pushButton_dot, SIGNAL(clicked()), this, SLOT(add_symbol()));
+  connect(ui->pushButton_space, SIGNAL(clicked()), this, SLOT(add_symbol()));
 
   connect(ui->pushButton_bracket_1, SIGNAL(clicked()), this,
           SLOT(add_symbol()));
@@ -200,9 +201,9 @@ int MainWindow::get_result(QString str_show_line, double* result) {
   char* input = array_input.data();
 
   code = ft_from_infix_to_postfix(input, polish);
-
   if (code == SUCCESS) {
     code = ft_calcul_polish(polish, result);
   }
+  qDebug() << code;
   return (code);
 }

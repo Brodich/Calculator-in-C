@@ -51,7 +51,7 @@ int ft_is_operation(char symb);
 char ft_is_function_before_polish(char symb);
 char ft_is_function_after_polish(char symb);
 int ft_is_number(char* symb);
-int ft_is_unar_minus(char* symb);
+int ft_is_unar_minus(char* pt_in, char first_symbol);
 
 int ft_polish_number(char symb, char** pt_in, char** pt_polish);
 void ft_polish_operation(char symb, node_t** stack_polish, char** pt_in,

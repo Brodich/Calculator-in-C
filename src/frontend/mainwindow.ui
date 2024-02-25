@@ -572,7 +572,7 @@
      <string>-</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_17">
+   <widget class="QPushButton" name="pushButton_space">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -602,7 +602,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello there&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="text">
-     <string/>
+     <string> </string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_0">

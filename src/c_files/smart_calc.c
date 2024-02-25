@@ -35,10 +35,11 @@ int ft_calcul_polish(char* pt_polish, double* result) {
 int ft_from_infix_to_postfix(char* pt_in, char* pt_polish) {
   node_t* stack_polish = NULL;
   char symb = 0;
+  char first_symbol = 1;
   int code = SUCCESS;
   while (*pt_in != '\0' && code == SUCCESS) {
     symb = *pt_in;
-    if (ft_is_unar_minus(pt_in)) {
+    if (ft_is_unar_minus(pt_in, first_symbol)) {
       ft_handling_unar_minus(&pt_polish, &stack_polish, symb);
     } else if (symb >= '0' && symb <= '9') {
       code = ft_polish_number(symb, &pt_in, &pt_polish);
@@ -54,6 +55,7 @@ int ft_from_infix_to_postfix(char* pt_in, char* pt_polish) {
     } else {
       code = ERROR_NOT_CORRECT_SYMBOLE;
     }
+    first_symbol = 0;
     pt_in++;
   }
   if (code == SUCCESS)
@@ -301,9 +303,12 @@ int ft_is_number(char* symb) {
   return (ERROR);
 }
 
-int ft_is_unar_minus(char* symb) {
-  if ((*symb == '-' && *(symb + 1) >= '0' && *(symb + 1) <= '9')) {
-    return (SUCCESS);
+int ft_is_unar_minus(char* pt_in, char first_symbol) {
+  if (ft_is_operation(*(pt_in - 1)) || *(pt_in - 1) == '(' ||
+      first_symbol == 1) {
+    if ((*pt_in == '-' && *(pt_in + 1) >= '0' && *(pt_in + 1) <= '9')) {
+      return (SUCCESS);
+    }
   }
   return (ERROR);
 }
