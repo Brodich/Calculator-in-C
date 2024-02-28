@@ -388,6 +388,20 @@
   }
     ck_assert_float_eq(smart_res, true_res);
 
+#test calcul_29
+  char* in = ".045-4.045";
+    char polish[255] = {0};
+      int error = 0;
+  error = ft_from_infix_to_postfix(in, polish);
+
+  double smart_res = 0;
+  double true_res = -4;
+  if (error == SUCCESS) {
+    error = ft_calcul_polish(polish, &smart_res);
+  }
+    ck_assert_float_eq(smart_res, true_res);
+    ck_assert_int_eq(error, 1);
+
 
 
 #test calcul_error_1

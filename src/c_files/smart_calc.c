@@ -41,8 +41,8 @@ int ft_from_infix_to_postfix(char* pt_in, char* pt_polish) {
     symb = *pt_in;
     if (ft_is_unar_minus(pt_in, first_symbol)) {
       ft_handling_unar_minus(&pt_polish, &stack_polish, symb);
-    } else if (symb >= '0' && symb <= '9') {
-      code = ft_polish_number(symb, &pt_in, &pt_polish);
+    } else if ((symb >= '0' && symb <= '9') || symb == '.') {
+      code = ft_polish_number(&pt_in, &pt_polish);
     } else if (symb == '(') {
       push(&stack_polish, symb);
     } else if (ft_is_function_before_polish(symb)) {
@@ -95,14 +95,21 @@ void ft_polish_operation(char symb, node_t** stack_polish, char** pt_in,
 /// @param pt_in input string in infix form
 /// @param pt_polish output string in polish notation
 /// @return code error, if SUCCESS then all ok
-int ft_polish_number(char symb, char** pt_in, char** pt_polish) {
+int ft_polish_number(char** pt_in, char** pt_polish) {
   int dot = 0;
-  while ((symb >= '0' && symb <= '9') || (symb == '.')) {
-    if (symb == '.') dot++;
-    **pt_polish = symb;
+  if (**pt_in == '.') {
+    dot++;
+    **pt_polish = '0';
+    (*pt_polish)++;
+    **pt_polish = '.';
     (*pt_polish)++;
     (*pt_in)++;
-    symb = **pt_in;
+  }
+  while ((**pt_in >= '0' && **pt_in <= '9') || (**pt_in == '.')) {
+    if (**pt_in == '.') dot++;
+    **pt_polish = **pt_in;
+    (*pt_polish)++;
+    (*pt_in)++;
   }
   (*pt_in)--;
   **pt_polish = ' ';
@@ -152,8 +159,6 @@ char ft_is_function_before_polish(char symb) {
   char res = 0;
   if (symb == 'c' || symb == 's' || symb == 't' || symb == 'a' || symb == 'l') {
     res = 1;
-  } else {
-    res = 0;
   }
   return (res);
 }

@@ -37,7 +37,7 @@ gcov_report: create_tests $(NAME_LIB) test
 create_tests:
 	checkmk clean_mode=1 c_files/$(NAME_TEST).check > $(NAME_TEST).c	
 
-test: clang $(NAME_LIB) create_tests $(NAME_TEST).o
+test: clean clang $(NAME_LIB) create_tests $(NAME_TEST).o
 	$(CC) $(NAME_TEST).o $(NAME_LIB) $(FLAGS) -o test
 	./test
 
