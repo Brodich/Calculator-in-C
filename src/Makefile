@@ -25,7 +25,7 @@ all: clean clang install
 %.o: %.c
 	$(CC) -c -o $@ $<
 
-gcov_report: create_tests $(NAME_LIB) test
+gcov_report: $(NAME_LIB) create_tests 
 	rm -f *.g*
 	$(CC) $(SRCS) $(NAME_TEST).c $(NAME_LIB) $(FLAGS) $(GCOVFLAGS)  $(NAME_LIB) -o test
 	./test
